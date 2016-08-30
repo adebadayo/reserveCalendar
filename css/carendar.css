@@ -1,0 +1,29 @@
+.today {
+    background: skyblue;
+}
+
+td {
+    height: 50px;
+}
+
+td[class^="reserve-"]{
+	height: 15px;
+}
+
+.label{
+	/*width:100%;*/
+}
+
+/*.table-reserve{
+	table-layout:fixed;
+	width:100%;
+}*/
+
+.table-calender{
+	table-layout:fixed;
+	width:100%;
+}
+
+.header{
+	text-align:center;
+}

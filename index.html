@@ -1,0 +1,78 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>reserveCar</title>
+	<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'>
+	<link rel="stylesheet" href="css/carendar.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.2/ui-bootstrap-tpls.min.js'></script>
+
+	<script src="js/calendar.js"></script>
+
+</head>
+<body  ng-app="calendarApp" ng-controller="CalendarCtrl">
+	<div class="container">
+		<div class="jumbotron">
+			<h2>Reserve Car!</h2>
+		</div>	
+		<h3>{{year}}/{{month}}</h3>
+		<div class="btn-group" role="group">
+			<button type="button" class="btn btn-default" ng-click="prevMonth()">＜</button>
+			<button type="button" class="btn btn-default" ng-click="nextMonth()">＞</button>
+			<button type="button" class="btn btn-default" ng-click="dispToday()">Today</button>
+		</div>
+		<table class="table table-calender table-striped">
+			<th class="header" ng-repeat="header in header">{{header}}</th>
+			<tr ng-repeat="week in calendar">
+				<td ng-repeat="day in week" class = "{{day.color}}" ng-click="openRegistForm(day.dd)">
+					
+					<table class="table-reserve">
+						<th>{{day.dd}}</th>
+						<tr><td class="reserve-area"><span class="label label-primary">{{rData[day.dd].title}}</span></td></tr>
+					</table>
+				</td>
+			</tr>	
+		</table>	
+	</div>
+
+	<div>{{result}}</div>
+	
+	<script type="text/ng-template" id="T_registForm">
+
+		<div class="modal-header">
+			<button type="button" class="close" ng-click="$dismiss()">&times;</button>
+			<h3>{{year}}/{{month}}/{{reserveDay}}</h3>
+		</div>
+		<div class="modal-body">
+			<form role="form">
+				<div class="form-group">
+					<label>予約者</label>
+					<select ng-model="rData[reserveDay].member" ng-options="m for m in members"  class="form-control input-sm"></select>
+
+					<label>時間帯</label>
+					<select ng-model="rData[reserveDay].timeZone" ng-options="tz for tz in timeZone" class="form-control input-sm"></select>
+
+					<label>使用目的</label>
+					<select ng-model="rData[reserveDay].purpose" ng-options="p for p in purpose" class="form-control input-sm"></select>
+	 			</div>
+
+				<div class="form-group">
+					<label>メモ</label>
+					<textarea ng-model="newGuest.Name" rows='4' cols='10' class="form-control"></textarea>
+				</div>
+			</form>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-success" data-dismiss="modal" ng-click="registReserve()">予約</button>
+			<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="deleteReserve()">削除</button>
+		</div>
+	</script>
+</script>
+
+</body>
+</html>
