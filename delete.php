@@ -24,7 +24,7 @@ try {
 							where date = :date");
 	$stmt->execute(array(
 		':date'     => $date
-		);
+		));
 	
 } catch(PDOException $e){
 	echo $e->getMessage();
