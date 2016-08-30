@@ -32,12 +32,12 @@ try {
 							timezone   = :timezone,
 							purpose    = :purpose
 							where date = :date");
-	$stmt->execute([
+	$stmt->execute(array(
 		':member'   => $member, 
 		':timezone' => $timeZone,
 		':purpose'  => $purpose,
 		':date'     => $date
-		]);
+		));
 	
 	// $stmt = $db->query("select * from users");
 	// $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -50,13 +50,13 @@ try {
 	// // disconnect
 
 	//main
-	$res = [];
-	$data = [];
+	$res = array();
+	$data = array();
 
-	$data[] = ["name"=>"sato","age"=>"44"];
-	$data[] = ["name"=>"ito","age"=>"22"];
-	$data[] = ["name"=>"tanaka","age"=>"33"];
-	$data[] = ["name"=>"suzuki","age"=>"55"];
+	$data[] = array("name"=>"sato","age"=>"44");
+	$data[] = array("name"=>"ito","age"=>"22");
+	$data[] = array("name"=>"tanaka","age"=>"33");
+	$data[] = array("name"=>"suzuki","age"=>"55");
 
 	$res['status'] = "OK";
 	$res['data'] = $data;

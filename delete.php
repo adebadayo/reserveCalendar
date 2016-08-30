@@ -22,9 +22,9 @@ try {
 							timezone   = NULL,
 							purpose    = NULL
 							where date = :date");
-	$stmt->execute([
+	$stmt->execute(array(
 		':date'     => $date
-		]);
+		);
 	
 } catch(PDOException $e){
 	echo $e->getMessage();
